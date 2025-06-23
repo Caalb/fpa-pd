@@ -7,13 +7,7 @@
 **Autores:**
 
 - Carlos Ferreira
-- [Nome do Integrante 2]
-- [Nome do Integrante 3]
-- [Nome do Integrante 4]
-- [Nome do Integrante 5]
-- [Nome do Integrante 6]
-- [Nome do Integrante 7]
-- [Nome do Integrante 8] (se aplicável)
+-
 
 **📚 Disciplina:** Programação Avançada 2
 **📅 Data:** 2025-06-23
