@@ -9,7 +9,7 @@
 - Carlos Ferreira
 -
 
-**📚 Disciplina:** Programação Avançada 2
+**📚 Disciplina:** Fundamentos de Projeto e Análise de Algoritmos
 **📅 Data:** 2025-06-23
 **🔧 Versão:** 1.0
 **💻 Linguagem:** TypeScript
