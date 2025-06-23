@@ -1,6 +1,6 @@
 # 🔍 Explicação Detalhada dos Algoritmos - LCS (Longest Common Subsequence)
 
-**Trabalho de Programação Avançada 2**
+**Trabalho de Fundamentos de Projeto e Análise de Algoritmos**
 
 ## 👥 Informações do Grupo
 
