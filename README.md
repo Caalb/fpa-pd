@@ -1,6 +1,6 @@
-# Análise de Subsequências Comuns - GPA2
+# Análise de Subsequências Comuns - FPA
 
-**Trabalho de Programação Avançada 2**
+**Trabalho Fundamentos de Projeto e Análise de Algoritmos**
 
 ## Descrição da Solução
 
