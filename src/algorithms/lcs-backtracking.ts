@@ -8,7 +8,7 @@
 
  *
  * 📋 INFORMAÇÕES DO PROJETO:
- * - Disciplina: Programação Avançada 2
+ * - Disciplina: Fundamentos de Projeto e Análise de Algoritmos
  * - Versão: 1.0
  * - Data: 2025-06-23
  * - Linguagem: TypeScript
