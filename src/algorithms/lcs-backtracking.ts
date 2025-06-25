@@ -1,24 +1,30 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * 📚 SUBSEQUÊNCIA COMUM MAIS LONGA (LCS) - PROGRAMAÇÃO DINÂMICA + BACKTRACKING
+ * SUBSEQUÊNCIA COMUM MAIS LONGA (LCS) - PROGRAMAÇÃO DINÂMICA + BACKTRACKING
  * ═══════════════════════════════════════════════════════════════════════════════
  *
- * 👥 AUTORES DO GRUPO:
- * - Carlos Ferreira
+ * AUTORES DO GRUPO:
+ * - Carlos Alberto
+ * - Gabriela Maria
+ * - Gabriel Assunção
+ * - Gabriel Botini
+ * - Guilherme Saliba
+ * - Gustavo Souza
+ * - Marcelo Ferreira
+ * - Vinícus do Amaral
 
  *
- * 📋 INFORMAÇÕES DO PROJETO:
+ * INFORMAÇÕES DO PROJETO:
  * - Disciplina: Fundamentos de Projeto e Análise de Algoritmos
  * - Versão: 1.0
  * - Data: 2025-06-23
  * - Linguagem: TypeScript
- * - Framework: Vue 3
  *
- * 🎯 OBJETIVO:
+ * OBJETIVO:
  * Este arquivo implementa a versão completa que combina programação dinâmica
  * com backtracking para encontrar TODAS as subsequências comuns mais longas.
  *
- * 🔄 POR QUE O BACKTRACKING É NECESSÁRIO:
+ * POR QUE O BACKTRACKING É NECESSÁRIO:
  * A programação dinâmica sozinha só nos dá o COMPRIMENTO da LCS.
  * Para encontrar TODAS as strings LCS possíveis, precisamos explorar todos os
  * caminhos válidos pela tabela DP que levam à solução ótima.
@@ -27,9 +33,9 @@
 import { buildDPTable } from "./lcs-dynamic-programming";
 
 /**
- * 🔍 FUNÇÃO PRINCIPAL: Encontra todas as subsequências comuns mais longas entre duas strings
+ * FUNÇÃO PRINCIPAL: Encontra todas as subsequências comuns mais longas entre duas strings
  *
- * 📝 COMO FUNCIONA EM DUAS FASES:
+ * COMO FUNCIONA EM DUAS FASES:
  *
  * FASE 1 - Programação Dinâmica:
  * - Constrói a tabela DP com comprimentos de LCS para todos os subproblemas
@@ -40,7 +46,7 @@ import { buildDPTable } from "./lcs-dynamic-programming";
  * - Quando caracteres combinam: sempre os inclui (apenas um caminho)
  * - Quando caracteres diferem: explora AMBAS as direções se levam ao valor ótimo
  *
- * 💡 EXEMPLO:
+ * EXEMPLO:
  * Para "ijkijkii" e "ikjikji", existem múltiplas LCS de comprimento 5:
  * "ijiji", "ijiki", "ijkji", "ikiji", "ikiki", "ikjii", "ikjki"
  *
@@ -49,14 +55,14 @@ import { buildDPTable } from "./lcs-dynamic-programming";
  * @returns Array com todas as LCS únicas em ordem alfabética
  */
 export function findAllLCS(string1: string, string2: string): string[] {
-  // 📊 Fase 1: Construir a tabela de programação dinâmica
+  // Fase 1: Construir a tabela de programação dinâmica
   const dpTable = buildDPTable(string1, string2);
 
-  // 📦 Fase 2: Usar backtracking para encontrar todas as LCS
+  // Fase 2: Usar backtracking para encontrar todas as LCS
   const allLCSSet = new Set<string>(); // Set automaticamente previne duplicatas
 
   /**
-   * 🔄 FUNÇÃO RECURSIVA DE BACKTRACKING
+   * FUNÇÃO RECURSIVA DE BACKTRACKING
    *
    * Esta função explora todos os caminhos válidos pela tabela DP.
    * É como resolver um labirinto onde múltiplos caminhos podem levar ao tesouro!
@@ -66,7 +72,7 @@ export function findAllLCS(string1: string, string2: string): string[] {
    * @param currentLCS - LCS construída até agora (construímos de trás para frente)
    */
   function exploreAllPaths(i: number, j: number, currentLCS: string): void {
-    // 🏁 CASO BASE: Chegamos ao início de uma ou ambas as strings
+    // CASO BASE: Chegamos ao início de uma ou ambas as strings
     if (i === 0 || j === 0) {
       // Construímos a LCS de trás para frente, então reverter antes de adicionar
       const completeLCS = currentLCS.split("").reverse().join("");
@@ -79,24 +85,24 @@ export function findAllLCS(string1: string, string2: string): string[] {
     const char2 = string2[j - 1];
 
     if (char1 === char2) {
-      // ✅ CARACTERES COMBINAM!
+      // CARACTERES COMBINAM!
       // Este caractere DEVE fazer parte da LCS
       // Apenas um caminho a explorar: ir diagonal
       exploreAllPaths(i - 1, j - 1, currentLCS + char1);
     } else {
-      // ❌ CARACTERES SÃO DIFERENTES
+      // CARACTERES SÃO DIFERENTES
       // Precisamos explorar todas as direções que mantêm o comprimento ótimo da LCS
 
       const valueFromAbove = dpTable[i - 1][j]; // Vindo de cima (ignorar char1)
       const valueFromLeft = dpTable[i][j - 1]; // Vindo da esquerda (ignorar char2)
       const currentValue = dpTable[i][j]; // Valor da célula atual
 
-      // 🔍 Explorar caminho de cima se leva à solução ótima
+      // Explorar caminho de cima se leva à solução ótima
       if (valueFromAbove === currentValue) {
         exploreAllPaths(i - 1, j, currentLCS);
       }
 
-      // 🔍 Explorar caminho da esquerda se leva à solução ótima
+      // Explorar caminho da esquerda se leva à solução ótima
       if (valueFromLeft === currentValue) {
         exploreAllPaths(i, j - 1, currentLCS);
       }
@@ -105,10 +111,10 @@ export function findAllLCS(string1: string, string2: string): string[] {
     }
   }
 
-  // 🚀 Iniciar o backtracking do canto inferior direito da tabela DP
+  // Iniciar o backtracking do canto inferior direito da tabela DP
   exploreAllPaths(string1.length, string2.length, "");
 
-  // 📋 Converter Set para Array e ordenar alfabeticamente (como exigido pelo problema)
+  // Converter Set para Array e ordenar alfabeticamente (como exigido pelo problema)
   return Array.from(allLCSSet).sort();
 }
 
@@ -257,17 +263,17 @@ export function validateAllLCS(
 }
 
 /**
- * 📋 FUNÇÃO OBRIGATÓRIA: Processa múltiplos conjuntos de dados conforme especificação
+ * FUNÇÃO OBRIGATÓRIA: Processa múltiplos conjuntos de dados conforme especificação
  *
- * 📝 FORMATO DE ENTRADA:
+ * FORMATO DE ENTRADA:
  * - Primeira linha: número D (≤ 10) de conjuntos de dados
  * - Para cada conjunto: duas linhas (Helena e Marcus)
  *
- * 📤 FORMATO DE SAÍDA:
+ * FORMATO DE SAÍDA:
  * - Para cada conjunto: todas as LCS em ordem alfabética
  * - Linha em branco entre conjuntos diferentes
  *
- * 💡 EXEMPLO:
+ * EXEMPLO:
  * Entrada:
  * "1\nijkijkii\nikjikji"
  *
@@ -278,14 +284,14 @@ export function validateAllLCS(
  * @returns String formatada conforme especificação de saída
  */
 export function processMultipleDatasets(input: string): string {
-  // 📏 Passo 1: Dividir a entrada em linhas e validar
+  // Passo 1: Dividir a entrada em linhas e validar
   const lines = input.trim().split("\n");
 
   if (lines.length < 1) {
     throw new Error("Entrada inválida: deve conter pelo menos uma linha com D");
   }
 
-  // 🔢 Passo 2: Extrair número de conjuntos de dados
+  // Passo 2: Extrair número de conjuntos de dados
   const D = parseInt(lines[0]);
 
   if (isNaN(D) || D <= 0 || D > 10) {
@@ -294,7 +300,7 @@ export function processMultipleDatasets(input: string): string {
     );
   }
 
-  // ✅ Passo 3: Validar se há linhas suficientes
+  // Passo 3: Validar se há linhas suficientes
   const expectedLines = 1 + D * 2; // 1 linha para D + 2 linhas por conjunto
   if (lines.length < expectedLines) {
     throw new Error(
@@ -302,7 +308,7 @@ export function processMultipleDatasets(input: string): string {
     );
   }
 
-  // 📊 Passo 4: Processar cada conjunto de dados
+  // Passo 4: Processar cada conjunto de dados
   const results: string[] = [];
 
   for (let i = 0; i < D; i++) {
@@ -336,7 +342,7 @@ export function processMultipleDatasets(input: string): string {
       );
     }
 
-    // 🔍 Passo 5: Encontrar todas as LCS para este conjunto
+    // Passo 5: Encontrar todas as LCS para este conjunto
     const allLCS = findAllLCS(helenaSequence, marcusSequence);
 
     // Validar que encontramos pelo menos uma LCS
@@ -344,16 +350,16 @@ export function processMultipleDatasets(input: string): string {
       throw new Error(`Conjunto ${i + 1}: nenhuma LCS encontrada`);
     }
 
-    // 📝 Passo 6: Formatar resultado (já em ordem alfabética)
+    // Passo 6: Formatar resultado (já em ordem alfabética)
     results.push(allLCS.join("\n"));
   }
 
-  // 🎯 Passo 7: Juntar resultados com linha em branco entre conjuntos
+  // Passo 7: Juntar resultados com linha em branco entre conjuntos
   return results.join("\n\n");
 }
 
 /**
- * 🧪 FUNÇÃO DE TESTE: Valida o processamento com exemplos do roteiro
+ * FUNÇÃO DE TESTE: Valida o processamento com exemplos do roteiro
  *
  * @returns Objeto com resultados dos testes
  */

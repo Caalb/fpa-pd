@@ -1,29 +1,36 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * 📚 SOLUÇÃO APENAS COM PROGRAMAÇÃO DINÂMICA - LCS (Longest Common Subsequence)
+ *  SOLUÇÃO APENAS COM PROGRAMAÇÃO DINÂMICA - LCS (Longest Common Subsequence)
  * ═══════════════════════════════════════════════════════════════════════════════
  *
- * 👥 AUTORES DO GRUPO:
- * - Carlos Ferreira
+ *  AUTORES DO GRUPO:
+ * - Carlos Alberto
+ * - Gabriela Maria
+ * - Gabriel Assunção
+ * - Gabriel Botini
+ * - Guilherme Saliba
+ * - Gustavo Souza
+ * - Marcelo Ferreira
+ * - Vinícus do Amaral
 
  *
- * 📋 INFORMAÇÕES DO PROJETO:
+ *  INFORMAÇÕES DO PROJETO:
  * - Disciplina: Fundamentos de Projeto e Análise de Algoritmos
  * - Versão: 1.0
  * - Data: 2025-06-23
  * - Linguagem: TypeScript
  *
- * 🎯 OBJETIVO:
+ *  OBJETIVO:
  * Este arquivo implementa APENAS a solução com programação dinâmica,
  * encontrando o comprimento da LCS e UMA das subsequências possíveis.
  *
- * ⚠️ LIMITAÇÃO:
+ *  LIMITAÇÃO:
  * Esta versão NÃO encontra TODAS as LCS, apenas uma delas.
  * Para encontrar todas, é necessário o backtracking (arquivo separado).
  */
 
 /**
- * 🧮 Calcula o comprimento da maior subsequência comum usando programação dinâmica
+ *  Calcula o comprimento da maior subsequência comum usando programação dinâmica
  *
  * @param string1 - Primeira sequência
  * @param string2 - Segunda sequência
@@ -53,7 +60,7 @@ function calculateLCSLength(string1: string, string2: string): number {
 }
 
 /**
- * 🏗️ Constrói a tabela DP completa
+ *  Constrói a tabela DP completa
  *
  * @param string1 - Primeira sequência
  * @param string2 - Segunda sequência
@@ -81,7 +88,7 @@ function buildDPTable(string1: string, string2: string): number[][] {
 }
 
 /**
- * 🔄 Reconstrói UMA das LCS possíveis (não todas)
+ *  Reconstrói UMA das LCS possíveis (não todas)
  *
  * @param string1 - Primeira sequência
  * @param string2 - Segunda sequência
@@ -113,9 +120,9 @@ function reconstructOneLCS(
 }
 
 /**
- * 📋 FUNÇÃO PRINCIPAL: Processa entrada no formato do roteiro APENAS COM DP
+ *  FUNÇÃO PRINCIPAL: Processa entrada no formato do roteiro APENAS COM DP
  *
- * ⚠️ LIMITAÇÃO IMPORTANTE:
+ *  LIMITAÇÃO IMPORTANTE:
  * Esta versão retorna apenas UMA LCS por conjunto, não todas.
  * Isso é uma limitação da programação dinâmica pura.
  *
@@ -153,7 +160,7 @@ function processWithDynamicProgrammingOnly(input: string): string {
     const dp = buildDPTable(helena, marcus);
     const oneLCS = reconstructOneLCS(helena, marcus, dp);
 
-    // ⚠️ LIMITAÇÃO: Apenas uma LCS, não todas
+    //  LIMITAÇÃO: Apenas uma LCS, não todas
     if (oneLCS) {
       results.push(oneLCS);
     }
@@ -163,33 +170,33 @@ function processWithDynamicProgrammingOnly(input: string): string {
 }
 
 /**
- * 🧪 Função para testar a solução apenas com DP
+ *  Função para testar a solução apenas com DP
  */
 function testDynamicProgrammingOnly(): void {
-  console.log("🧪 TESTANDO SOLUÇÃO APENAS COM PROGRAMAÇÃO DINÂMICA");
-  console.log("⚠️  LIMITAÇÃO: Esta versão encontra apenas UMA LCS, não todas");
+  console.log(" TESTANDO SOLUÇÃO APENAS COM PROGRAMAÇÃO DINÂMICA");
+  console.log("  LIMITAÇÃO: Esta versão encontra apenas UMA LCS, não todas");
   console.log();
 
   const testInput = "1\nijkijkii\nikjikji";
 
   try {
     const result = processWithDynamicProgrammingOnly(testInput);
-    console.log("📥 ENTRADA:");
+    console.log(" ENTRADA:");
     console.log(testInput);
     console.log();
-    console.log("📤 SAÍDA (apenas uma LCS):");
+    console.log(" SAÍDA (apenas uma LCS):");
     console.log(result);
     console.log();
-    console.log("✅ Teste executado com sucesso!");
+    console.log(" Teste executado com sucesso!");
     console.log(
-      "📝 Nota: Para encontrar TODAS as LCS, use o arquivo com backtracking."
+      " Nota: Para encontrar TODAS as LCS, use o arquivo com backtracking."
     );
   } catch (error) {
-    console.error("❌ Erro no teste:", error);
+    console.error(" Erro no teste:", error);
   }
 }
 
-// 🚀 Executar teste se arquivo for executado diretamente
+//  Executar teste se arquivo for executado diretamente
 if (import.meta.url === `file://${process.argv[1]}`) {
   testDynamicProgrammingOnly();
 }

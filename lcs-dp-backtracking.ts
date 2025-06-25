@@ -1,28 +1,35 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * 📚 SOLUÇÃO COMPLETA - PROGRAMAÇÃO DINÂMICA + BACKTRACKING
+ * SOLUÇÃO COMPLETA - PROGRAMAÇÃO DINÂMICA + BACKTRACKING
  * ═══════════════════════════════════════════════════════════════════════════════
  *
- * 👥 AUTORES DO GRUPO:
- * - Carlos Ferreira
+ * AUTORES DO GRUPO:
+ * - Carlos Alberto
+ * - Gabriela Maria
+ * - Gabriel Assunção
+ * - Gabriel Botini
+ * - Guilherme Saliba
+ * - Gustavo Souza
+ * - Marcelo Ferreira
+ * - Vinícus do Amaral
 
  *
- * 📋 INFORMAÇÕES DO PROJETO:
+ *  INFORMAÇÕES DO PROJETO:
  * - Disciplina: Fundamentos de Projeto e Análise de Algoritmos
  * - Versão: 1.0
  * - Data: 2025-06-23
  * - Linguagem: TypeScript
  *
- * 🎯 OBJETIVO:
+ *  OBJETIVO:
  * Implementa a solução COMPLETA que encontra TODAS as subsequências comuns
  * mais longas usando programação dinâmica + backtracking.
  *
- * ✅ VANTAGEM:
+ *  VANTAGEM:
  * Esta versão encontra TODAS as LCS possíveis, não apenas uma.
  */
 
 /**
- * 🧮 Constrói tabela de programação dinâmica
+ *  Constrói tabela de programação dinâmica
  */
 function buildDPTable(string1: string, string2: string): number[][] {
   const m = string1.length;
@@ -46,7 +53,7 @@ function buildDPTable(string1: string, string2: string): number[][] {
 }
 
 /**
- * 🔍 Encontra TODAS as LCS usando backtracking na tabela DP
+ *  Encontra TODAS as LCS usando backtracking na tabela DP
  */
 function findAllLCS(string1: string, string2: string): string[] {
   const dp = buildDPTable(string1, string2);
@@ -83,7 +90,7 @@ function findAllLCS(string1: string, string2: string): string[] {
 }
 
 /**
- * 📋 FUNÇÃO PRINCIPAL: Processa entrada completa conforme roteiro
+ *  FUNÇÃO PRINCIPAL: Processa entrada completa conforme roteiro
  */
 function processCompleteWithBacktracking(input: string): string {
   const lines = input.trim().split("\n");
@@ -130,11 +137,11 @@ function processCompleteWithBacktracking(input: string): string {
 }
 
 /**
- * 🧪 Função para testar a solução completa
+ *  Função para testar a solução completa
  */
 function testCompleteBacktracking(): void {
-  console.log("🧪 TESTANDO SOLUÇÃO COMPLETA COM BACKTRACKING");
-  console.log("✅ Esta versão encontra TODAS as LCS possíveis");
+  console.log(" TESTANDO SOLUÇÃO COMPLETA COM BACKTRACKING");
+  console.log(" Esta versão encontra TODAS as LCS possíveis");
   console.log();
 
   const testInput = "1\nijkijkii\nikjikji";
@@ -152,10 +159,10 @@ function testCompleteBacktracking(): void {
     const result = processCompleteWithBacktracking(testInput);
     const resultLines = result.split("\n").filter((line) => line.trim());
 
-    console.log("📥 ENTRADA:");
+    console.log("ENTRADA:");
     console.log(testInput);
     console.log();
-    console.log("📤 SAÍDA (todas as LCS):");
+    console.log("SAÍDA (todas as LCS):");
     console.log(result);
     console.log();
 
@@ -166,22 +173,22 @@ function testCompleteBacktracking(): void {
     const exactMatch = resultLines.length === expectedOutput.length && allFound;
 
     if (exactMatch) {
-      console.log("✅ Teste PASSOU! Todas as LCS corretas foram encontradas.");
+      console.log(" Teste PASSOU! Todas as LCS corretas foram encontradas.");
     } else {
-      console.log("⚠️  Resultado diferente do esperado:");
+      console.log("  Resultado diferente do esperado:");
       console.log("Esperado:", expectedOutput);
       console.log("Encontrado:", resultLines);
     }
   } catch (error) {
-    console.error("❌ Erro no teste:", error);
+    console.error(" Erro no teste:", error);
   }
 }
 
 /**
- * 🧪 Teste com múltiplos conjuntos
+ *  Teste com múltiplos conjuntos
  */
 function testMultipleDatasets(): void {
-  console.log("\n🧪 TESTANDO COM MÚLTIPLOS CONJUNTOS");
+  console.log("\n TESTANDO COM MÚLTIPLOS CONJUNTOS");
 
   const testInput = `2
 abc
@@ -191,19 +198,19 @@ xz`;
 
   try {
     const result = processCompleteWithBacktracking(testInput);
-    console.log("📥 ENTRADA:");
+    console.log(" ENTRADA:");
     console.log(testInput);
     console.log();
-    console.log("📤 SAÍDA:");
+    console.log(" SAÍDA:");
     console.log(result);
     console.log();
-    console.log("✅ Teste com múltiplos conjuntos passou!");
+    console.log(" Teste com múltiplos conjuntos passou!");
   } catch (error) {
-    console.error("❌ Erro no teste múltiplo:", error);
+    console.error(" Erro no teste múltiplo:", error);
   }
 }
 
-// 🚀 Executar testes se arquivo for executado diretamente
+//  Executar testes se arquivo for executado diretamente
 if (import.meta.url === `file://${process.argv[1]}`) {
   testCompleteBacktracking();
   testMultipleDatasets();
